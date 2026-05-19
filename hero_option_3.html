@@ -27,7 +27,6 @@
   --gb: rgba(255,255,255,0.07);
   --gbh: rgba(255,255,255,0.055);
   --green: #22c55e;
-  --hero-cta-margin: 30.5rem;
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -263,8 +262,7 @@ nav.scrolled {
   background:var(--glass); border:1px solid var(--gb);
   border-radius:100px; padding:0.35rem 1rem;
   font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase;
-  color:var(--w80); margin-bottom:1.4rem;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  color:var(--w60); margin-bottom:1.4rem;
 }
 .live-dot {
   width:6px; height:6px; border-radius:50%;
@@ -278,7 +276,6 @@ nav.scrolled {
   font-size:0.72rem; letter-spacing:0.35em;
   color:var(--purple-light); text-transform:uppercase;
   margin-bottom:1.5rem;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
 
 .hero-h1 {
@@ -287,7 +284,6 @@ nav.scrolled {
   font-weight:700; line-height:1.05;
   letter-spacing:-0.02em;
   margin-bottom:1.4rem;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.9), 0 0 30px rgba(155,51,160,0.3);
 }
 .hero-h1 .c1 {
   background:linear-gradient(135deg,#c084fc,#a855f7,#7c3aed);
@@ -1268,7 +1264,7 @@ nav.scrolled {
   animation: pulseDot 2s ease infinite;
 }
 
-/* Layer 4: Absolute Base Watermark (Liquid Laser CSS Animation) */
+/* Layer 4: Absolute Base Watermark */
 .footer-watermark {
   position: absolute;
   bottom: -2.8rem;
@@ -1277,35 +1273,17 @@ nav.scrolled {
   font-family: 'Orbitron', sans-serif;
   font-size: 13vw;
   font-weight: 900;
+  color: rgba(155, 51, 160, 0.022);
   letter-spacing: 0.08em;
   user-select: none;
   pointer-events: none;
   white-space: nowrap;
-  z-index: 1; /* Changed from 0 to 1 so mobile Safari never hides it under the parent background! */
+  z-index: 0;
   line-height: 1;
-
-  /* Ultra-compatible, highly visible neon color & text-shadow sweep */
-  color: rgba(155, 51, 160, 0.05);
-  -webkit-text-fill-color: currentColor; /* Force WebKit browser engines to draw our neon colors! */
-  animation: liquidLaserSweep 8s ease-in-out infinite;
-}
-
-@keyframes liquidLaserSweep {
-  0%, 100% {
-    color: rgba(155, 51, 160, 0.05);
-    text-shadow: 0 0 0px transparent;
-  }
-  50% {
-    color: rgba(192, 132, 252, 0.22);
-    text-shadow: 0 0 25px rgba(192, 132, 252, 0.45);
-  }
 }
 
 /* Responsive updates for Footer */
 @media(max-width: 900px) {
-  .footer-monument {
-    padding: 4rem 1.5rem 5rem !important; /* Generous bottom spacing for the copyright & watermark to breathe! */
-  }
   .footer-cta-bar {
     flex-direction: column;
     align-items: flex-start;
@@ -1321,70 +1299,12 @@ nav.scrolled {
     width: 100%;
   }
   .footer-grid {
-    grid-template-columns: 1fr !important;
-    gap: 0.85rem !important;
-    margin-bottom: 3rem !important;
-  }
-  .ft-col {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--gb);
-    border-radius: 8px;
-    padding: 0.95rem 1.2rem;
-    transition: all 0.3s ease;
-  }
-  .ft-col h4 {
-    margin-bottom: 0 !important;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    font-size: 0.76rem !important;
-  }
-  .ft-col h4::after {
-    content: '＋';
-    font-size: 0.78rem;
-    color: var(--purple-light);
-    transition: transform 0.3s ease;
-  }
-  .ft-col.active h4::after {
-    content: '－';
-    transform: rotate(180deg);
-  }
-  .ft-col ul {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.3s;
-    margin-top: 0;
-    gap: 0.7rem;
-  }
-  .ft-col.active ul {
-    max-height: 350px;
-    margin-top: 1rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
   }
   .footer-watermark {
-    font-size: 16vw !important;
-    bottom: 0.8rem !important; /* Elevated perfectly to sit above the cut-off gutter */
-    display: block !important;
-    z-index: 1 !important; /* Move to z-index: 1 so mobile Safari never hides it under the parent background! */
-    
-    /* 100% Mobile-safe color and glowing text-shadow ripple */
-    color: rgba(155, 51, 160, 0.11) !important;
-    background: none !important;
-    -webkit-background-clip: initial !important;
-    -webkit-text-fill-color: currentColor !important; /* Forces standard WebKit rendering with glowing colors! */
-    background-clip: initial !important;
-    animation: liquidLaserSweepMobile 5s ease-in-out infinite !important;
-  }
-}
-
-@keyframes liquidLaserSweepMobile {
-  0%, 100% {
-    color: rgba(155, 51, 160, 0.11);
-    text-shadow: 0 0 0px transparent;
-  }
-  50% {
-    color: rgba(192, 132, 252, 0.35);
-    text-shadow: 0 0 16px rgba(192, 132, 252, 0.6);
+    font-size: 16vw;
+    bottom: -1.5rem;
   }
 }
 @media(max-width: 600px) {
@@ -1578,25 +1498,6 @@ nav.scrolled .mobile-dropdown {
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
-  :root {
-    --hero-cta-margin: 14.5rem;
-    --glass: rgba(11, 14, 32, 0.94);
-  }
-  .glass-card {
-    background: rgba(11, 14, 32, 0.92) !important;
-    backdrop-filter: blur(24px) !important;
-    -webkit-backdrop-filter: blur(24px) !important;
-  }
-  .bento-c {
-    background: rgba(11, 14, 32, 0.92) !important;
-    backdrop-filter: blur(24px) !important;
-    -webkit-backdrop-filter: blur(24px) !important;
-  }
-  .faq-i {
-    background: rgba(11, 14, 32, 0.92) !important;
-    backdrop-filter: blur(24px) !important;
-    -webkit-backdrop-filter: blur(24px) !important;
-  }
   nav {
     top: 0;
     width: 100%;
@@ -1736,46 +1637,27 @@ nav.scrolled .mobile-dropdown {
 <div class="mobile-overlay" id="mobile-overlay"></div>
 
 <!-- ════════════════════ HERO ════════════════════ -->
-<section id="hero">
-  <!-- Interactive Particle Wordmark Canvas -->
-  <canvas id="particle-canvas"></canvas>
-  <!-- Nebula gradient layers -->
+<section id="hero" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; text-align: left; padding: 6rem 5% 4rem; min-height: 100vh; position: relative;">
   <div class="hero-nebula">
     <div class="nebula-orb nebula-1"></div>
     <div class="nebula-orb nebula-2"></div>
     <div class="nebula-orb nebula-3"></div>
   </div>
-  <!-- Subtle grid overlay -->
-  <div class="hero-grid-overlay"></div>
+  <div class="hero-grid-overlay" style="z-index: 1;"></div>
 
-  <div class="hero-content" style="pointer-events: none;">
-    <!-- Top Tagline & Status -->
-    <div class="hero-live" style="pointer-events: auto; display: inline-flex; margin-bottom: 1rem;">
-      <span class="live-dot"></span> NOW ACCEPTING APPLICATIONS · 2026 COHORT
-    </div>
-    <div class="hero-tagline" style="pointer-events: auto;">INTERN · CONNECT · INNOVATE </div>
-    <h1 class="hero-h1" style="pointer-events: auto; margin-bottom: 1.5rem;">
-      Join the <br>
-      <span class="c1">NEXTAR</span> <span class="c2">Internship</span><br>
-      
-    </h1>
-    <p style="color: #ffffff; margin-top: -20px;">Gain hands on experience on emegrging technology statups</p>
-
-    <!-- Space for interactive particle wordmark "NEXTAR" to shine in the center -->
-
-    <!-- CTA Buttons -->
-    <div class="hero-ctas" style="margin-top: var(--hero-cta-margin); pointer-events: auto;">
-      <a href="#form-s" class="btn-p" id="cta-apply">
+  <div style="flex: 1; max-width: 600px; z-index: 10;">
+    <div class="hero-live"><div class="live-dot"></div> 2026 APPLICATIONS OPEN</div>
+    <div class="hero-tagline">ENGINEER THE IMPOSSIBLE</div>
+    <h1 class="hero-h1" style="margin-bottom:1.4rem;"><span class="c2">Build the Future of</span><br><span class="c1">Quantum Computing</span></h1>
+    <p class="hero-p" style="margin: 0 0 2.4rem 0; text-align: left;">Join Nextar Quantum Systems for an intensive internship program. Work on cutting-edge AI, software engineering, and quantum systems alongside industry leaders.</p>
+    <div class="hero-ctas" style="justify-content: flex-start; margin-bottom: 0;">
+      <a href="#form-s" class="btn-p">
         <span>Apply Now</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
     </div>
   </div>
-
-  <!-- Scroll chevron -->
-  <div class="hero-chevron">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"><path d="m6 9 6 6 6-6"/></svg>
-  </div>
+  <div style="flex: 1; z-index: 3; pointer-events: none;"></div>
+  <div id="canvas-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;"></div>
 </section>
 
 <!-- ════════════════════ MARQUEE ════════════════════ -->
@@ -2439,8 +2321,7 @@ function initWordmarkTargets() {
   const imgData = offCtx.getImageData(0, 0, 460, 100).data;
   targetPoints = [];
   
-  const isMobile = window.innerWidth < 768;
-  const spacing = isMobile ? 3.0 : 2.0;
+  const spacing = 3.5;
   for (let y = 0; y < 100; y += spacing) {
     for (let x = 0; x < 460; x += spacing) {
       const idx = (Math.floor(y) * 460 + Math.floor(x)) * 4;
@@ -2463,8 +2344,7 @@ function resizeHeroCanvas() {
   // Re-scale target positions to make the NEXTAR wordmark significantly bigger
   const scale = Math.min(displayW / 380, 2.3);
   const cX = displayW / 2;
-  const isMobile = window.innerWidth < 768;
-  const cY = isMobile ? displayH / 2 + 35 : displayH / 2 + 65;
+  const cY = displayH / 2 - 25; // Shifted slightly up to balance the single CTA button below
   
   particles.forEach((p, idx) => {
     if (idx < targetPoints.length) {
@@ -2482,13 +2362,11 @@ function initHeroParticles() {
   particles = [];
   initWordmarkTargets();
   
-  const isMobile = window.innerWidth < 768;
-  const count = isMobile ? Math.max(targetPoints.length + 150, 650) : Math.max(targetPoints.length + 550, 1600);
+  const count = Math.max(targetPoints.length + 350, 1000);
   const displayW = heroCanvas.offsetWidth;
   const displayH = heroCanvas.offsetHeight;
   
   for (let i = 0; i < count; i++) {
-    const isWhite = Math.random() < 0.12;
     particles.push({
       x: Math.random() * displayW,
       y: Math.random() * displayH,
@@ -2496,11 +2374,11 @@ function initHeroParticles() {
       vy: (Math.random() - 0.5) * 0.4,
       tx: 0,
       ty: 0,
-      size: Math.random() * 1.3 + 0.5,
+      size: Math.random() * 1.5 + 0.6,
       ease: Math.random() * 0.12 + 0.08,
       friction: Math.random() * 0.05 + 0.82,
-      color: isWhite ? '#c084fc' : (Math.random() < 0.6 ? '#9b33a0' : '#682063'),
-      alpha: isMobile ? (Math.random() * 0.18 + 0.1) : (Math.random() * 0.32 + 0.15)
+      color: Math.random() < 0.82 ? '#9b33a0' : '#ffffff',
+      alpha: Math.random() * 0.45 + 0.4
     });
   }
   
@@ -2512,24 +2390,18 @@ function animateHeroParticles() {
   const displayH = heroCanvas.offsetHeight;
   heroCtx.clearRect(0, 0, displayW, displayH);
   
-  const isMobile = window.innerWidth < 768;
-  const stepJ = isMobile ? 8 : 4;
-  const stepI = isMobile ? 2 : 1;
-  const maxDist = isMobile ? 40 : 60;
-  
-  // Draw neural connecting lines (beautifully faint and elegant)
-  const maxLineAlpha = isMobile ? 0.05 : 0.09;
-  for (let i = 0; i < particles.length; i += stepI) {
-    for (let j = i + 1; j < particles.length; j += stepJ) {
+  // Draw neural connecting lines (adding a lot more nodes and active lines)
+  for (let i = 0; i < particles.length; i += 1) {
+    for (let j = i + 1; j < particles.length; j += 4) {
       const dx = particles[i].x - particles[j].x;
       const dy = particles[i].y - particles[j].y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < maxDist) {
+      if (dist < 60) {
         heroCtx.beginPath();
         heroCtx.moveTo(particles[i].x, particles[i].y);
         heroCtx.lineTo(particles[j].x, particles[j].y);
-        heroCtx.strokeStyle = `rgba(192, 132, 252, ${maxLineAlpha * (1 - dist / maxDist)})`;
-        heroCtx.lineWidth = 0.45;
+        heroCtx.strokeStyle = `rgba(192, 132, 252, ${0.16 * (1 - dist / 60)})`;
+        heroCtx.lineWidth = 0.5;
         heroCtx.stroke();
       }
     }
@@ -2790,26 +2662,13 @@ function resizeGraph() {
   const w = graphCanvas.offsetWidth;
   const h = graphCanvas.offsetHeight;
   
-  let configs = TRACK_HUBS[activeTrackIdx] || [];
-  const isMobile = window.innerWidth < 768;
-  if (isMobile && configs.length > 3) {
-    configs = configs.slice(0, 3);
-  }
-  
-  hubs = configs.map(cfg => {
-    let xPct = cfg.xPct;
-    let yPct = cfg.yPct;
-    if (isMobile) {
-      xPct = 0.3 + (xPct - 0.5) * 0.5;
-      yPct = 0.5 + (yPct - 0.5) * 0.5;
-    }
-    return {
-      id: cfg.id,
-      x: w * xPct,
-      y: h * yPct,
-      pulse: 0
-    };
-  });
+  const configs = TRACK_HUBS[activeTrackIdx] || [];
+  hubs = configs.map(cfg => ({
+    id: cfg.id,
+    x: w * cfg.xPct,
+    y: h * cfg.yPct,
+    pulse: 0
+  }));
 }
 
 function triggerPulse() {
@@ -3101,24 +2960,6 @@ document.querySelectorAll('.mob-link').forEach(link => {
 });
 
 
-/* ─── Collapsible Footer Columns on Mobile ─── */
-document.querySelectorAll('.ft-col h4').forEach(header => {
-  header.addEventListener('click', () => {
-    if (window.innerWidth < 900) {
-      const col = header.parentElement;
-      const isActive = col.classList.contains('active');
-      
-      // Close other columns to behave as a single accordion
-      document.querySelectorAll('.ft-col').forEach(c => c.classList.remove('active'));
-      
-      if (!isActive) {
-        col.classList.add('active');
-      }
-    }
-  });
-});
-
-
 /* ─── Magnetic Gravity Attraction Physics for Primary CTA ─── */
 const ctaBtn = document.getElementById('cta-apply');
 
@@ -3178,6 +3019,221 @@ if (navEl) {
     }
   });
 }
+
+</script>
+
+<!-- THREE JS LOGIC -->
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+</script>
+
+<script type="module">
+    window.addEventListener('error', function(e) {
+        const errDiv = document.createElement('div');
+        errDiv.style = 'position:fixed;top:0;left:0;z-index:9999;background:red;color:white;padding:20px;font-family:monospace;white-space:pre-wrap;';
+        errDiv.textContent = 'WINDOW ERROR: ' + e.message + ' at ' + e.filename + ':' + e.lineno;
+        document.body.appendChild(errDiv);
+    });
+
+    import * as THREE from 'three';
+    import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+    import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+    import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+    import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+    import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+    import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+    try {
+        // 1. Scene Setup
+        const scene = new THREE.Scene();
+    // Add a subtle ambient fog to blend the edges into the void
+    scene.fog = new THREE.FogExp2(0x05060E, 0.05);
+
+    // 2. Camera Setup (Positioned to push the X to the right side of the screen)
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.set(0, 0, 15);
+
+    // Shift camera view to the left so the 3D object naturally sits on the right
+    camera.setViewOffset(window.innerWidth, window.innerHeight, -window.innerWidth * 0.25, 0, window.innerWidth, window.innerHeight);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Optimize for performance
+    renderer.setClearColor(0x05060E, 0); // Important for UnrealBloomPass with alpha
+    document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+    // HDRI Environment using RoomEnvironment
+    const pmremGenerator = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmremGenerator.fromScene(new RoomEnvironment(), 0.04).texture;
+
+    // 2.5 Post-Processing Setup (Bloom Pass)
+    const composer = new EffectComposer(renderer);
+    const renderPass = new RenderPass(scene, camera);
+    composer.addPass(renderPass);
+
+    // Resolution, strength, radius, threshold
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 1.5);
+    composer.addPass(bloomPass);
+
+    const outputPass = new OutputPass();
+    composer.addPass(outputPass);
+
+    // 3. Lighting (Brand Colors)
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+    scene.add(ambientLight);
+
+    // Nextar Purple directional light
+    const purpleLight = new THREE.DirectionalLight(0x682063, 5);
+    purpleLight.position.set(5, 5, 5);
+    scene.add(purpleLight);
+
+    // Nextar Blue point light hitting from below
+    const blueLight = new THREE.PointLight(0x21255C, 10, 20);
+    blueLight.position.set(-5, -5, 2);
+    scene.add(blueLight);
+
+    const whiteRimLight = new THREE.DirectionalLight(0xffffff, 1);
+    whiteRimLight.position.set(-5, 5, -5);
+    scene.add(whiteRimLight);
+
+    // 4. The Monolithic "Double-Hull" "X" Mathematics with Micro-Bevels
+    const logoGroup = new THREE.Group();
+
+    // Inner Metallic Core
+    const coreMaterial = new THREE.MeshStandardMaterial({
+        color: 0x111111,
+        metalness: 1.0,
+        roughness: 0.4
+    });
+
+    // Outer Glass Shell with Dispersion
+    const glassMaterial = new THREE.MeshPhysicalMaterial({
+        color: 0x000000,
+        metalness: 0.1,
+        roughness: 0.1,
+        transmission: 1.0, // Full Glass effect
+        thickness: 2.0,
+        ior: 1.5,
+        dispersion: 2.0 // Chromatic Aberration
+    });
+
+    // RoundedBoxGeometry(width, height, depth, segments, radius)
+    const coreGeom = new RoundedBoxGeometry(1.05, 7.85, 1.35, 4, 0.05);
+    const shellGeom = new RoundedBoxGeometry(1.2, 8, 1.5, 4, 0.05);
+    
+    // Bar 1 (Angled Right)
+    const bar1Core = new THREE.Mesh(coreGeom, coreMaterial);
+    const bar1Shell = new THREE.Mesh(shellGeom, glassMaterial);
+    const bar1Group = new THREE.Group();
+    bar1Group.add(bar1Core);
+    bar1Group.add(bar1Shell);
+    bar1Group.rotation.z = Math.PI / 6;
+
+    // Bar 2 (Angled Left)
+    const bar2Core = new THREE.Mesh(coreGeom, coreMaterial);
+    const bar2Shell = new THREE.Mesh(shellGeom, glassMaterial);
+    const bar2Group = new THREE.Group();
+    bar2Group.add(bar2Core);
+    bar2Group.add(bar2Shell);
+    bar2Group.rotation.z = -Math.PI / 6;
+    
+    logoGroup.add(bar1Group);
+    logoGroup.add(bar2Group);
+
+    // 5. The Quantum Orbit Icon
+    const quantumGroup = new THREE.Group();
+    
+    // Emissive brand material for the core (Intensity pumped up for Bloom)
+    const glowMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0xffffff, 
+        emissive: 0x682063, 
+        emissiveIntensity: 5 // High intensity triggers bloom pass threshold
+    });
+
+    const coreSphere = new THREE.Mesh(new THREE.SphereGeometry(0.15, 16, 16), glowMaterial);
+    quantumGroup.add(coreSphere);
+
+    // Rings
+    const ringGeo = new THREE.TorusGeometry(0.4, 0.02, 16, 100);
+    const ringMat = new THREE.MeshStandardMaterial({ color: 0x21255C, metalness: 0.8, roughness: 0.2 });
+    
+    for(let i = 0; i < 3; i++) {
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        ring.rotation.x = Math.random() * Math.PI;
+        ring.rotation.y = Math.random() * Math.PI;
+        quantumGroup.add(ring);
+    }
+
+    // Position the orbit on the top-left tip of the X
+    quantumGroup.position.set(-2, 3.5, 0.8);
+    logoGroup.add(quantumGroup);
+
+    scene.add(logoGroup);
+
+    // 6. Interactive Physics & Animation
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    const windowHalfX = window.innerWidth / 2;
+    const windowHalfY = window.innerHeight / 2;
+
+    document.addEventListener('mousemove', (event) => {
+        mouseX = (event.clientX - windowHalfX);
+        mouseY = (event.clientY - windowHalfY);
+    });
+
+    const clock = new THREE.Clock();
+
+    function animate() {
+        requestAnimationFrame(animate);
+        const time = clock.getElapsedTime();
+
+        // Smooth linear interpolation (lerp) for mouse follow
+        targetX = mouseX * 0.001;
+        targetY = mouseY * 0.001;
+        
+        logoGroup.rotation.y += 0.05 * (targetX - logoGroup.rotation.y);
+        logoGroup.rotation.x += 0.05 * (targetY - logoGroup.rotation.x);
+
+        // Ambient floating math using sine waves
+        logoGroup.position.y = Math.sin(time * 1.5) * 0.2;
+
+        // Spin the quantum rings
+        quantumGroup.children.forEach((child, index) => {
+            if(index > 0) { // Skip the core sphere
+                child.rotation.x += 0.01 * index;
+                child.rotation.y += 0.02;
+            }
+        });
+
+        // Use composer instead of renderer for post-processing
+        composer.render();
+    }
+
+    animate();
+
+    // Handle Resize
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        composer.setSize(window.innerWidth, window.innerHeight);
+        // Re-apply view offset on resize
+        camera.setViewOffset(window.innerWidth, window.innerHeight, -window.innerWidth * 0.25, 0, window.innerWidth, window.innerHeight);
+    });
+    } catch (e) {
+        const errDiv = document.createElement('div');
+        errDiv.style = 'position:fixed;top:0;left:0;z-index:9999;background:red;color:white;padding:20px;font-family:monospace;white-space:pre-wrap;';
+        errDiv.textContent = 'THREE.JS EXCEPTION: ' + e.toString() + '\n' + e.stack;
+        document.body.appendChild(errDiv);
+    }
 </script>
 </body>
 </html>
